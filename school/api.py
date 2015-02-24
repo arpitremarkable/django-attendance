@@ -34,7 +34,7 @@ def attendance_set(bundle):
         date = datetime.date(year=int(bundle.request.GET['year']), month=int(bundle.request.GET['month']), day=int(bundle.request.GET['day']))
     except (KeyError, ValueError) as e:
         date = datetime.date.today()
-    return models.Attendance.objects.filter(date=date)
+    return bundle.obj.attendance_set.filter(date=date)
 
 class UserResource(ModelResource):
 
